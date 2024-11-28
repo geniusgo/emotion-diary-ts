@@ -1,0 +1,55 @@
+.emotion-card {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(236, 236, 236);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.emotion-card.emotion1 {
+  background-color: #64c964;
+
+  & p {
+    color: #ffffff;
+  }
+}
+
+.emotion-card.emotion2 {
+  background-color: #9dd772;
+
+  & p {
+    color: #ffffff;
+  }
+}
+
+.emotion-card.emotion3 {
+  background-color: #fdce17;
+
+  & p {
+    color: #ffffff;
+  }
+}
+
+.emotion-card.emotion4 {
+  background-color: #fd8446;
+
+  & p {
+    color: #ffffff;
+  }
+}
+
+.emotion-card.emotion5 {
+  background-color: #fd565f;
+
+  & p {
+    color: #ffffff;
+  }
+}
+
+.emotion-card > img {
+  width: 50%;
+}

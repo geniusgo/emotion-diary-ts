@@ -1,3 +1,4 @@
+import './EmotionCard.css';
 import { EMOTION_NAME } from '../constants/emotion-name';
 
 interface Props {
@@ -6,7 +7,7 @@ interface Props {
 
 const EmotionCard = ({ emotionId }: Props) => {
   return (
-    <div className='emotion-card'>
+    <div className={`emotion-card${emotionId ? ` emotion${emotionId}` : ''}`}>
       <img src={`../src/assets/emotion${emotionId}.png`} />
       <p>{EMOTION_NAME[emotionId]}</p>
     </div>
