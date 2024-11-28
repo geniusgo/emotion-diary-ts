@@ -2,7 +2,7 @@ export const mockData = [
   {
     id: 0,
     emotionId: 3,
-    diaryDate: new Date(2024, 11, 10, 0, 0, 0, 0),
+    diaryDate: new Date(2024, 9, 10, 0, 0, 0, 0),
     content: '오늘의 일기 오늘은 그냥 그랬다 끝 0',
   },
   {
@@ -20,7 +20,7 @@ export const mockData = [
   {
     id: 3,
     emotionId: 2,
-    diaryDate: new Date(2024, 10, 10, 0, 0, 0, 0),
+    diaryDate: new Date(2024, 12, 10, 0, 0, 0, 0),
     content: '오늘의 일기 오늘은 그냥 그랬다 끝 3',
   },
   {
@@ -32,7 +32,7 @@ export const mockData = [
   {
     id: 5,
     emotionId: 3,
-    diaryDate: new Date(2024, 12, 10, 0, 0, 0, 0),
+    diaryDate: new Date(2024, 11, 10, 0, 0, 0, 0),
     content: '오늘의 일기 오늘은 그냥 그랬다 끝 5',
   },
 ];
