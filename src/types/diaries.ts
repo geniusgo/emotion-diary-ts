@@ -3,7 +3,7 @@ export interface Diary {
   id: number;
   diaryDate: Date;
   content: string;
-  emotionId: number;
+  emotionId: string;
 }
 
 export interface DiaryDispatch {
