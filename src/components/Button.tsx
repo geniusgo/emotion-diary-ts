@@ -7,8 +7,8 @@ interface Props {
 
 const Button = ({ textContent, type }: Props) => {
   return (
-    <div className={`button-container${type ? ' ' + type : ''}`}>
-      <button>{textContent}</button>
+    <div className={`button-container`}>
+      <button className={`${type ? type : ''}`}>{textContent}</button>
     </div>
   );
 };

@@ -15,3 +15,12 @@
 .button-container > button:hover {
   background-color: rgb(216, 216, 216);
 }
+
+.button-container > button.positive {
+  background-color: #64c964;
+  color: #ffffff;
+}
+
+.button-container > button.positive:hover {
+  background-color: #59bd59;
+}
