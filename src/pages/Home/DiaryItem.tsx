@@ -2,10 +2,17 @@ import { Diary } from '../../types/diaries';
 import { dateFormatter } from '../../utils/date-formatter';
 import EmotionCard from '../../components/EmotionCard';
 import Button from '../../components/Button';
+import { useNavigate } from 'react-router-dom';
 
-const DiaryItem = ({ diaryDate, emotionId, content }: Diary) => {
+const DiaryItem = ({ id, diaryDate, emotionId, content }: Diary) => {
+  const nav = useNavigate();
+
+  const handlePageMoveToDetails = () => {
+    nav(`./details/${id}`);
+  };
+
   return (
-    <div className='diary-item-container'>
+    <div className='diary-item-container' onClick={handlePageMoveToDetails}>
       <EmotionCard emotionId={emotionId} />
       <div className='contents'>
         <p className='date'>{dateFormatter(diaryDate, '-')}</p>

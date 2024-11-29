@@ -4,10 +4,10 @@ import { Diary } from '../../types/diaries';
 
 interface Props {
   term: Date;
-  sortBy: 'latest' | 'oldest';
+  sortBy: string;
 }
 
-const diarySort = (diaries: Diary[], sortBy: 'latest' | 'oldest') => {
+const diarySort = (diaries: Diary[], sortBy: string) => {
   return [...diaries].sort((a: Diary, b: Diary) =>
     sortBy === 'latest'
       ? b.diaryDate.getTime() - a.diaryDate.getTime()
