@@ -3,7 +3,7 @@ import { dateFormatter } from '../../utils/date-formatter';
 import EmotionCard from '../../components/EmotionCard';
 import Button from '../../components/Button';
 
-const DiaryItem = ({ id, diaryDate, emotionId, content }: Diary) => {
+const DiaryItem = ({ diaryDate, emotionId, content }: Diary) => {
   return (
     <div className='diary-item-container'>
       <EmotionCard emotionId={emotionId} />

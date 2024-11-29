@@ -1,0 +1,17 @@
+.emotion-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 40px 0px;
+}
+
+.emotion-container > .emotion-card {
+  width: 300px;
+  height: 300px;
+}
+
+.emotion-container > .emotion-card > p {
+  font-size: 18px;
+}

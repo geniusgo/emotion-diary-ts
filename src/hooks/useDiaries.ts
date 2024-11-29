@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { DiaryStateContext } from '../App';
+import { DiariesStateContext } from '../App';
 
 const useDiaries = () => {
-  const diaries = useContext(DiaryStateContext);
+  const diaries = useContext(DiariesStateContext);
 
   if (diaries === null) {
     throw new Error('Context의 Provider를 정의하세요');

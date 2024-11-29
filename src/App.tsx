@@ -29,8 +29,8 @@ const diariesReducer = (state: Diary[], action: Action) => {
   }
 };
 
-export const DiaryStateContext = createContext<Diary[] | null>(null);
-export const DiaryDispatchContext = createContext<DiaryDispatch | null>(null);
+export const DiariesStateContext = createContext<Diary[] | null>(null);
+export const DiariesDispatchContext = createContext<DiaryDispatch | null>(null);
 
 function App() {
   const [diaries, dispatch] = useReducer(diariesReducer, mockData);
@@ -40,8 +40,8 @@ function App() {
   const handleDiaryUpdate = () => {};
 
   return (
-    <DiaryStateContext.Provider value={diaries}>
-      <DiaryDispatchContext.Provider
+    <DiariesStateContext.Provider value={diaries}>
+      <DiariesDispatchContext.Provider
         value={{ handleDiaryCreate, handleDiaryDelete, handleDiaryUpdate }}
       >
         <Routes>
@@ -51,8 +51,8 @@ function App() {
           <Route path='/edit/:id' element={<Edit />}></Route>
           <Route path='*' element={<NotFound />}></Route>
         </Routes>
-      </DiaryDispatchContext.Provider>
-    </DiaryStateContext.Provider>
+      </DiariesDispatchContext.Provider>
+    </DiariesStateContext.Provider>
   );
 }
 
