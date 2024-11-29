@@ -7,9 +7,8 @@ import ContentSection from './ContentSection';
 import Footer from './Footer';
 import useDiary from '../../hooks/useDiary';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useEffect, useState, useContext, useRef } from 'react';
+import { useState, useContext, useRef } from 'react';
 import { DiariesDispatchContext } from '../../App';
-import { Diary } from '../../types/diaries';
 
 const Edit = () => {
   const dispatch = useContext(DiariesDispatchContext);
@@ -24,10 +23,6 @@ const Edit = () => {
   if (dispatch === null) {
     throw new Error('diary dispatch 함수를 확인하세요');
   }
-
-  useEffect(() => {
-    console.log(diaryDate, emotionId, content);
-  }, [diaryDate, emotionId, content]);
 
   const handleDiaryCreate = () => {
     if (window.confirm('작성하신 정보로 일기를 생성합니다')) {
@@ -59,14 +54,26 @@ const Edit = () => {
     nav('/', { replace: true });
   };
 
+  const handleDiaryDelete = () => {
+    if (window.confirm('일기를 정말 삭제할까요?')) {
+      dispatch.handleDiaryDelete(params.id as string);
+    }
+
+    nav('/', { replace: true });
+  };
+
+  const handlePageMoveToHome = () => {
+    nav('/', { replace: true });
+  };
+
   return (
     <div className='edit-container'>
       <Header
-        leftBtn={<Button textContent='< 뒤로 가기' />}
+        leftBtn={<Button textContent='< 뒤로 가기' onClick={handlePageMoveToHome} />}
         headerTitle={diary ? '일기 수정하기' : '새 일기 쓰기'}
         rightBtn={
           diary ? (
-            <Button textContent='삭제하기' type='negative' />
+            <Button textContent='삭제하기' type='negative' onClick={handleDiaryDelete} />
           ) : (
             <Button textContent='' type='none' />
           )

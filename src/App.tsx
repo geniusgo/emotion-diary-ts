@@ -41,7 +41,12 @@ function App() {
       diary,
     });
   };
-  const handleDiaryDelete = () => {};
+  const handleDiaryDelete = (id: string) => {
+    dispatch({
+      type: 'DELETE',
+      id: id,
+    });
+  };
   const handleDiaryUpdate = (diary: Diary) => {
     dispatch({
       type: 'UPDATE',

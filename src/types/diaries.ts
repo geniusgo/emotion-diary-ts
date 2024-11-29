@@ -8,6 +8,6 @@ export interface Diary {
 
 export interface DiaryDispatch {
   handleDiaryCreate: (diary: Diary) => void;
-  handleDiaryDelete: () => void;
+  handleDiaryDelete: (id: string) => void;
   handleDiaryUpdate: (diary: Diary) => void;
 }

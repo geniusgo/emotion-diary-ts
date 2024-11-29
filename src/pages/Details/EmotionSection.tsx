@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 const EmotionSection = () => {
   const diaries = useDiaries();
   const params = useParams();
-  const diary = diaries.filter((item) => item.id === Number(params.id))[0];
+  const diary = diaries.filter((item) => item.id === params.id)[0];
 
   return (
     <div className='emotion-container'>

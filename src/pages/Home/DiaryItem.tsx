@@ -13,6 +13,10 @@ const DiaryItem = ({ id, diaryDate, emotionId, content }: Diary) => {
     }
   };
 
+  const handlePageMoveToEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    nav(`./edit/${id}`);
+  };
+
   return (
     <div className='diary-item-container' onClick={handlePageMoveToDetails}>
       <EmotionCard emotionId={emotionId} />
@@ -20,7 +24,7 @@ const DiaryItem = ({ id, diaryDate, emotionId, content }: Diary) => {
         <p className='date'>{dateFormatter(diaryDate, '-')}</p>
         <p className='content'>{content}</p>
       </div>
-      <Button textContent='수정하기' />
+      <Button textContent='수정하기' onClick={handlePageMoveToEdit} />
     </div>
   );
 };
