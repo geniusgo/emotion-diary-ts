@@ -3,9 +3,7 @@ import './Button.css';
 interface Props {
   textContent: string;
   type?: string;
-  onClick?: (
-    e: React.MouseEvent<HTMLElement, MouseEvent>
-  ) => void /** 필수지만, 개발 편의 상 일단 옵셔널로 둠 **/;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button = ({ textContent, type, onClick }: Props) => {

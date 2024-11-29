@@ -7,12 +7,13 @@ import { useState } from 'react';
 
 const Home = () => {
   const [term, setTerm] = useState(new Date());
+  const [sortBy, setSortBy] = useState('latest');
 
-  const handleClickLastMonth = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const handleClickLastMonth = (e: React.MouseEvent<HTMLButtonElement>) => {
     setTerm(new Date(term.getFullYear(), term.getMonth() - 1, 1, 0, 0, 0, 0));
   };
 
-  const handleClickNextMonth = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const handleClickNextMonth = (e: React.MouseEvent<HTMLButtonElement>) => {
     setTerm(new Date(term.getFullYear(), term.getMonth() + 1, 1, 0, 0, 0, 0));
   };
 
@@ -23,8 +24,8 @@ const Home = () => {
         headerTitle={`${term.getFullYear()}년 ${term.getMonth() + 1}월`}
         rightBtn={<Button textContent='>' onClick={handleClickNextMonth} />}
       />
-      <Controller />
-      <DiaryList term={term} />
+      <Controller setSortBy={setSortBy} />
+      <DiaryList term={term} sortBy={sortBy} />
     </div>
   );
 };
