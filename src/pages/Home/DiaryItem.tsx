@@ -7,8 +7,10 @@ import { useNavigate } from 'react-router-dom';
 const DiaryItem = ({ id, diaryDate, emotionId, content }: Diary) => {
   const nav = useNavigate();
 
-  const handlePageMoveToDetails = () => {
-    nav(`./details/${id}`);
+  const handlePageMoveToDetails = (e: React.MouseEvent<HTMLElement>) => {
+    if (!(e.target instanceof HTMLButtonElement)) {
+      nav(`./details/${id}`);
+    }
   };
 
   return (
