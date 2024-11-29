@@ -7,14 +7,17 @@ import ContentSection from './ContentSection';
 import useDiary from '../../hooks/useDiary';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Diary } from '../../types/diaries';
 
 const Edit = () => {
   const params = useParams();
   const diary = useDiary(params.id || '');
-  const [diaryDate, setDiaryDate] = useState(new Date());
-  const [emotionId, setEmotionId] = useState('');
-  const [content, setContent] = useState('');
+  const [diaryDate, setDiaryDate] = useState(diary ? diary.diaryDate : new Date());
+  const [emotionId, setEmotionId] = useState(diary ? diary.emotionId : '');
+  const [content, setContent] = useState(diary ? diary.content : '');
+
+  useEffect(() => {
+    console.log(diaryDate, emotionId, content);
+  }, [diaryDate, emotionId, content]);
 
   return (
     <div className='edit-container'>
@@ -27,8 +30,8 @@ const Edit = () => {
         date={diary === undefined ? new Date() : diary.diaryDate}
         setDiaryDate={setDiaryDate}
       />
-      <EmotionSection />
-      <ContentSection />
+      <EmotionSection emotionId={emotionId} setEmotionId={setEmotionId} />
+      <ContentSection content={content} setContent={setContent} />
     </div>
   );
 };
