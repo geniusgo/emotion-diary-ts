@@ -11,7 +11,7 @@ const useDiary = (id: string | undefined) => {
   }
 
   const diaries = useDiaries();
-  return diaries.filter((diary) => diary.id === Number(id))[0];
+  return diaries.filter((diary) => diary.id === id)[0];
 };
 
 export default useDiary;

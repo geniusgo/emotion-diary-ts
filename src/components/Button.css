@@ -24,3 +24,12 @@
 .button-container > button.positive:hover {
   background-color: #59bd59;
 }
+
+.button-container > button.negative {
+  background-color: #fd565f;
+  color: #ffffff;
+}
+
+.button-container > button.negative:hover {
+  background-color: #e1464d;
+}

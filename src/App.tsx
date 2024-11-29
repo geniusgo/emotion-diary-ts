@@ -13,7 +13,7 @@ type Action =
       type: 'CREATE';
       diary: Diary;
     }
-  | { type: 'DELETE'; id: number }
+  | { type: 'DELETE'; id: string }
   | { type: 'UPDATE'; diary: Diary };
 
 const diariesReducer = (state: Diary[], action: Action) => {
@@ -35,9 +35,19 @@ export const DiariesDispatchContext = createContext<DiaryDispatch | null>(null);
 function App() {
   const [diaries, dispatch] = useReducer(diariesReducer, mockData);
 
-  const handleDiaryCreate = () => {};
+  const handleDiaryCreate = (diary: Diary) => {
+    dispatch({
+      type: 'CREATE',
+      diary,
+    });
+  };
   const handleDiaryDelete = () => {};
-  const handleDiaryUpdate = () => {};
+  const handleDiaryUpdate = (diary: Diary) => {
+    dispatch({
+      type: 'UPDATE',
+      diary,
+    });
+  };
 
   return (
     <DiariesStateContext.Provider value={diaries}>

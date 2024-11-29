@@ -1,13 +1,13 @@
 /** 타입 정의 **/
 export interface Diary {
-  id: number;
+  id: string;
   diaryDate: Date;
   content: string;
   emotionId: string;
 }
 
 export interface DiaryDispatch {
-  handleDiaryCreate: () => void;
+  handleDiaryCreate: (diary: Diary) => void;
   handleDiaryDelete: () => void;
-  handleDiaryUpdate: () => void;
+  handleDiaryUpdate: (diary: Diary) => void;
 }
