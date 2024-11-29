@@ -1,6 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { createContext, useReducer } from 'react';
+import { createContext, useReducer, useRef } from 'react';
 import { mockData } from './utils/mock-data.ts';
 import { Diary, DiaryDispatch } from './types/diaries.ts';
 import Home from './pages/Home/index.tsx';

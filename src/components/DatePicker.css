@@ -1,0 +1,13 @@
+.date-picker > input {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(236, 236, 236);
+  cursor: pointer;
+  appearance: none;
+}
+
+/* 브라워저에서 제공해주는 input 캘린더의 이미지 요소에 접근해서 cursor: pointer 속성 적용 */
+.date-picker > input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}

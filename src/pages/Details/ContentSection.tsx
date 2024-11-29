@@ -1,5 +1,6 @@
 import useDiary from '../../hooks/useDiary';
 import { useParams } from 'react-router-dom';
+import Textarea from '../../components/TextArea';
 
 const ContentSection = () => {
   const params = useParams();
@@ -8,9 +9,7 @@ const ContentSection = () => {
   return (
     <div className='content-container'>
       <h3>오늘의 일기</h3>
-      <div className='diary-content-container'>
-        <textarea name='diary-content' value={diary.content} readOnly />
-      </div>
+      <Textarea content={diary.content} />
     </div>
   );
 };

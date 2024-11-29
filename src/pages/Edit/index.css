@@ -1,0 +1,64 @@
+.edit-container > .header-container > .button-container > button.none {
+  cursor: none;
+  background-color: #ffffff;
+}
+
+.edit-container > .date-container {
+  padding: 40px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.edit-container > .date-container h3 {
+  font-size: 16px;
+}
+
+.edit-container > .emotion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.edit-container > .emotion-container > h3 {
+  font-size: 16px;
+}
+
+.edit-container > .emotion-container > .emotion-card-container {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.edit-container > .emotion-container > .emotion-card-container > .emotion-card {
+  cursor: pointer;
+}
+
+.edit-container > .emotion-container > .emotion-card-container > .emotion-card > img {
+  width: 40%;
+}
+
+.edit-container > .emotion-container > .emotion-card-container > .emotion-card.gray {
+  background-color: rgb(236, 236, 236);
+}
+
+.edit-container > .emotion-container > .emotion-card-container > .emotion-card.gray:hover {
+  background-color: rgb(216, 216, 216);
+}
+
+.edit-container > .emotion-container > .emotion-card-container > .emotion-card.gray > p {
+  color: rgb(35, 32, 32);
+}
+
+.edit-container > .content-section {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.edit-container > .content-section > h3 {
+  font-size: 16px;
+}

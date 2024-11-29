@@ -6,6 +6,10 @@ const useDiary = (id: string | undefined) => {
     throw new Error('id의 타입이 잘못됐습니다');
   }
 
+  if (id === '') {
+    return;
+  }
+
   const diaries = useDiaries();
   return diaries.filter((diary) => diary.id === Number(id))[0];
 };

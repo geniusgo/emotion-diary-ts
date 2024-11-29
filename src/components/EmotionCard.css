@@ -8,6 +8,7 @@
   background-color: rgb(236, 236, 236);
   border-radius: 8px;
   font-size: 14px;
+  gap: 10px;
 }
 
 .emotion-card.emotion1 {

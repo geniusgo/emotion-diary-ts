@@ -7,10 +7,15 @@ import Header from '../../components/Header';
 import Button from '../../components/Button';
 import EmotionSection from './EmotionSection';
 import ContentSection from './ContentSection';
+import { useEffect } from 'react';
 
 const Details = () => {
   const params = useParams();
   const diary = useDiary(params.id);
+
+  useEffect(() => {
+    console.log(diary);
+  });
 
   return (
     <div className='details-container'>
