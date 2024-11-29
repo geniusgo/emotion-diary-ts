@@ -1,3 +1,4 @@
+// 전체 다이어리 목록 받아오는 Hook
 import { useContext } from 'react';
 import { DiariesStateContext } from '../App';
 

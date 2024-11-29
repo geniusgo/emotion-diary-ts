@@ -1,9 +1,13 @@
 * {
   color: rgb(35, 32, 32);
+  margin: 0;
 }
 
 #root {
   width: 600px;
-  margin: 20px auto;
+  margin: 0px auto;
   padding: 10px;
+  box-shadow: #64646433 0 0 29px;
+  min-height: 100vh;
+  padding: 30px;
 }
