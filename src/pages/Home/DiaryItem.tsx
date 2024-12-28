@@ -4,20 +4,18 @@ import EmotionCard from '../../components/EmotionCard';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 
-const DiaryItem = ({ _id, diaryDate, emotionId, content }: Diary) => {
+const DiaryItem = ({ id, diaryDate, emotionId, content }: Diary) => {
   const nav = useNavigate();
 
   const handlePageMoveToDetails = (e: React.MouseEvent<HTMLElement>) => {
     if (!(e.target instanceof HTMLButtonElement)) {
-      nav(`./details/${_id}`);
+      nav(`./details/${id}`);
     }
   };
 
   const handlePageMoveToEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    nav(`./edit/${_id}`);
+    nav(`./edit/${id}`);
   };
-
-  console.log(diaryDate, emotionId, content);
 
   return (
     <div className='diary-item-container' onClick={handlePageMoveToDetails}>

@@ -1,10 +1,11 @@
 /** 타입 정의 **/
 export interface Diary {
-  _id: string;
+  id?: string;
   diaryDate: Date;
   content: string;
   emotionId: string;
-  emotionUrl: string;
+  emotionUrl?: string;
+  _id?: string;
 }
 
 export interface DiaryDispatch {

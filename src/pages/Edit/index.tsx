@@ -9,6 +9,7 @@ import useDiary from '../../hooks/useDiary';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useContext, useRef } from 'react';
 import { DiariesDispatchContext } from '../../App';
+import { deleteDiary, postDiary, putDiary } from '../../api/diariesRequest';
 
 const Edit = () => {
   const dispatch = useContext(DiariesDispatchContext);
@@ -24,14 +25,16 @@ const Edit = () => {
     throw new Error('diary dispatch 함수를 확인하세요');
   }
 
-  const handleDiaryCreate = () => {
+  const handleCreate = async () => {
     if (window.confirm('작성하신 정보로 일기를 생성합니다')) {
-      // 상태 업데이트
+      const data = (await postDiary({ diaryDate, emotionId, content }))[0];
+
       dispatch.handleDiaryCreate({
-        id: String(id.current++),
-        diaryDate,
-        emotionId,
-        content,
+        id: data._id,
+        diaryDate: new Date(data.diaryDate),
+        emotionId: data.emotionId,
+        content: data.content,
+        emotionUrl: data.emotionUrl,
       });
 
       // 홈 화면으로 이동
@@ -39,14 +42,22 @@ const Edit = () => {
     }
   };
 
-  const handleDiaryUpdate = () => {
+  const handleUpdate = async () => {
     // 상태 업데이트
     if (window.confirm('작성하신 정보로 일기를 수정할까요?')) {
-      dispatch.handleDiaryUpdate({
-        id: params.id as string,
+      const data = await putDiary({
+        id: diary?.id,
         diaryDate,
         emotionId,
         content,
+      });
+
+      dispatch.handleDiaryUpdate({
+        id: data._id,
+        diaryDate: new Date(data.diaryDate),
+        content: data.content,
+        emotionId: data.emotionId,
+        emotionUrl: data.emotionUrl,
       });
     }
 
@@ -54,9 +65,12 @@ const Edit = () => {
     nav('/', { replace: true });
   };
 
-  const handleDiaryDelete = () => {
+  const handleDiaryDelete = async () => {
     if (window.confirm('일기를 정말 삭제할까요?')) {
-      dispatch.handleDiaryDelete(params.id as string);
+      if (diary?.id) {
+        await deleteDiary(diary.id);
+        dispatch.handleDiaryDelete(diary.id);
+      }
     }
 
     nav('/', { replace: true });
@@ -79,16 +93,13 @@ const Edit = () => {
           )
         }
       />
-      <DateSection
-        date={diary === undefined ? new Date() : diary.diaryDate}
-        setDiaryDate={setDiaryDate}
-      />
+      <DateSection date={diaryDate} setDiaryDate={setDiaryDate} />
       <EmotionSection emotionId={emotionId} setEmotionId={setEmotionId} />
       <ContentSection content={content} setContent={setContent} />
       <Footer
         buttonText={diary ? '수정하기' : '만들기'}
-        onClickCreate={handleDiaryCreate}
-        onClickUpdate={handleDiaryUpdate}
+        onClickCreate={handleCreate}
+        onClickUpdate={handleUpdate}
         type={diary ? 'edit' : 'new'}
       />
     </div>

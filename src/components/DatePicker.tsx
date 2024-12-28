@@ -1,6 +1,5 @@
 import './DatePicker.css';
 import { dateFormatter } from '../utils/date-formatter';
-import { useEffect } from 'react';
 
 interface Props {
   date: Date;
@@ -8,9 +7,6 @@ interface Props {
 }
 
 const DatePicker = ({ date, onChange }: Props) => {
-  useEffect(() => {
-    console.log(date);
-  }, []);
   return (
     <div className='date-picker'>
       <input type='date' value={dateFormatter(date, '-')} onChange={onChange} />

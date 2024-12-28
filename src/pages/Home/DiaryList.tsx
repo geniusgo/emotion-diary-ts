@@ -30,7 +30,7 @@ const DiaryList = ({ term, sortBy }: Props) => {
   return (
     <div className='diary-list-container'>
       {sortedFilteredDiaries.map((diary) => (
-        <DiaryItem key={diary._id} {...diary} />
+        <DiaryItem key={diary.id} {...diary} />
       ))}
     </div>
   );

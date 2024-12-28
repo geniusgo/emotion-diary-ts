@@ -29,6 +29,7 @@ const diariesReducer = (state: Diary[], action: Action) => {
     case 'DELETE':
       return state.filter((todo) => todo.id !== action.id);
     case 'UPDATE':
+      console.log(state, action.diary);
       return state.map((todo) => (todo.id === action.diary.id ? action.diary : todo));
     default:
       throw new Error('unknown action');
@@ -50,7 +51,7 @@ function App() {
         dispatch({
           type: 'INIT',
           data: diaries.map((diary: Diary) => {
-            return { ...diary, diaryDate: new Date(diary.diaryDate) };
+            return { ...diary, id: diary._id, diaryDate: new Date(diary.diaryDate) };
           }),
         });
       }
