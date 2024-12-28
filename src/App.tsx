@@ -1,14 +1,18 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { createContext, useReducer, useRef } from 'react';
-import { mockData } from './utils/mock-data.ts';
+import { createContext, useEffect, useReducer, useRef } from 'react';
 import { Diary, DiaryDispatch } from './types/diaries.ts';
 import Home from './pages/Home/index.tsx';
 import Edit from './pages/Edit/index.tsx';
 import Details from './pages/Details/index.tsx';
 import NotFound from './pages/NotFound/index.tsx';
+import { getDiaries } from './api/diariesRequest.ts';
 
 type Action =
+  | {
+      type: 'INIT';
+      data: Diary[];
+    }
   | {
       type: 'CREATE';
       diary: Diary;
@@ -18,6 +22,8 @@ type Action =
 
 const diariesReducer = (state: Diary[], action: Action) => {
   switch (action.type) {
+    case 'INIT':
+      return [...action.data];
     case 'CREATE':
       return [...state, action.diary];
     case 'DELETE':
@@ -33,7 +39,29 @@ export const DiariesStateContext = createContext<Diary[] | null>(null);
 export const DiariesDispatchContext = createContext<DiaryDispatch | null>(null);
 
 function App() {
-  const [diaries, dispatch] = useReducer(diariesReducer, mockData);
+  const [diaries, dispatch] = useReducer(diariesReducer, []);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const dataFetch = async () => {
+      if (isMounted) {
+        const diaries = await getDiaries();
+        dispatch({
+          type: 'INIT',
+          data: diaries.map((diary: Diary) => {
+            return { ...diary, diaryDate: new Date(diary.diaryDate) };
+          }),
+        });
+      }
+    };
+
+    dataFetch();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const handleDiaryCreate = (diary: Diary) => {
     dispatch({
